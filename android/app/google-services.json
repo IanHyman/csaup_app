@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "892270247643",
+    "project_id": "csaup-app",
+    "storage_bucket": "csaup-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892270247643:android:9b62fb25261fb65f4696fe",
+        "android_client_info": {
+          "package_name": "com.example.csaup_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9dKmByNDLaiE2e6sbS_DA1SP-cNXjkF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,34 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "csaup-app",
+          "appId": "1:892270247643:android:9b62fb25261fb65f4696fe",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "csaup-app",
+          "appId": "1:892270247643:ios:ef7ed9eac23b77594696fe",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "csaup-app",
+          "configurations": {
+            "android": "1:892270247643:android:9b62fb25261fb65f4696fe",
+            "ios": "1:892270247643:ios:ef7ed9eac23b77594696fe"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

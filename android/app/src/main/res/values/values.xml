@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id">1:892270247643:android:9b62fb25261fb65f4696fe</string>
+    <string name="gcm_defaultSenderId">892270247643</string>
+    <string name="google_api_key">AIzaSyA9dKmByNDLaiE2e6sbS_DA1SP-cNXjkF8</string>
+    <string name="google_app_id">1:892270247643:android:9b62fb25261fb65f4696fe</string>
+    <string name="google_storage_bucket">csaup-app.firebasestorage.app</string>
+    <string name="project_id">csaup-app</string>
+</resources>
+

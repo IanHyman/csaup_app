@@ -1,0 +1,48 @@
+name: csaup_app
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+2
+
+environment:
+  sdk: ">=3.6.1 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_local_notifications: ^18.0.1
+  timezone: ^0.10.0
+  firebase_core: ^3.12.0
+  firebase_auth: ^5.5.0
+  cloud_firestore: ^5.6.4
+  intl: ^0.20.2
+  table_calendar: ^3.2.0
+
+  # UI & Utility Plugins
+  flutter_launcher_icons: ^0.13.1  # ✅ Generates app icons
+  flutter_native_splash: ^2.4.0  # ✅ Generates a splash screen
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Define app assets
+  assets:
+    - assets/icon.png  # ✅ Your app icon
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"  # ✅ Update with your actual app icon
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/icon.png

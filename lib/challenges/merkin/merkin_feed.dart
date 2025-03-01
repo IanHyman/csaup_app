@@ -84,7 +84,7 @@ class _MerkinFeedState extends State<MerkinFeed> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 40.0),
             child: Row(
               children: [
                 Expanded(

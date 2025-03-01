@@ -112,7 +112,7 @@ class _ATR2025LeaderboardScreenState extends State<ATR2025LeaderboardScreen> {
         if (lastKnownLeaderboard.isEmpty) {
           return const Center(
             child: Text(
-              "No entries yet. Be the first to complete a location!",
+              "Give me a sec...",
               style: TextStyle(fontSize: 18),
               textAlign: TextAlign.center,
             ),

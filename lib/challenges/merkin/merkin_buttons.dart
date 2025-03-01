@@ -30,6 +30,7 @@ class MerkinButtons extends StatelessWidget {
             onPressed: onViewLeaderboard,
             child: Text("View Leaderboard"),
           ),
+          SizedBox(height: 10), // Add spacing between buttons
         if (isCompleted)
           ElevatedButton(
             onPressed: onRemoveCompletion,
@@ -62,7 +63,7 @@ class MerkinFeedButton extends StatelessWidget {
           ),
         );
       },
-      child: Text("Challenge Feed"),
+      child: Text("Mumblechatter"),
     );
   }
 }

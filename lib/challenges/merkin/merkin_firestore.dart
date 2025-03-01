@@ -53,50 +53,70 @@ class MerkinFirestore {
     }
   }
 
-static Future<void> completeSelectedDay(DateTime date) async {
-  User? user = FirebaseAuth.instance.currentUser;
-  if (user == null) return;
+  // 🔹 ✅ NEW: Fetch Username from Firestore
+  static Future<String> getUsername() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user == null) return "Unknown User";
 
-  String dateStr = formatDate(date);
-  int merkins = getMerkinsForDay(date);
+    try {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
 
-  try {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .collection('completedDays')
-        .doc(dateStr)
-        .set({
-      'date': dateStr,
-      'merkins': merkins,
-      'completedAt': Timestamp.now(),
-    });
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .update({
-      'totalMerkins': FieldValue.increment(merkins),
-    });
-
-    // 🔥 Auto-post completion to the feed
-    await FirebaseFirestore.instance
-        .collection('challenges')
-        .doc("merkin_challenge_id") // Replace with actual challenge ID
-        .collection('feed_posts')
-        .add({
-      'user_id': user.uid,
-      'username': user.displayName ?? "Unknown User",
-      'timestamp': FieldValue.serverTimestamp(),
-      'message': "${user.displayName ?? "Unknown User"} completed $merkins Merkins!",
-      'post_type': 'completion',
-    });
-
-  } catch (e) {
-    print("❌ Error completing day: $e");
+      return userDoc.exists ? userDoc['name'] ?? "Unknown User" : "Unknown User";
+    } catch (e) {
+      print("❌ Error fetching username: $e");
+      return "Unknown User";
+    }
   }
-}
 
+  static Future<void> completeSelectedDay(DateTime date) async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    String dateStr = formatDate(date);
+    int merkins = getMerkinsForDay(date);
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection('completedDays')
+          .doc(dateStr)
+          .set({
+        'date': dateStr,
+        'merkins': merkins,
+        'completedAt': Timestamp.now(),
+      });
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({
+        'totalMerkins': FieldValue.increment(merkins),
+      });
+
+      // ✅ Fetch username separately
+      String username = await getUsername();
+
+      // 🔥 Auto-post completion to the feed
+      await FirebaseFirestore.instance
+          .collection('challenges')
+          .doc("merkin_challenge_id") // Replace with actual challenge ID
+          .collection('feed_posts')
+          .add({
+        'user_id': user.uid,
+        'username': username,
+        'timestamp': FieldValue.serverTimestamp(),
+        'message': "$username completed $merkins Merkins!",
+        'post_type': 'completion',
+      });
+
+    } catch (e) {
+      print("❌ Error completing day: $e");
+    }
+  }
 
   static Future<void> removeCompletionForSelectedDay(DateTime date) async {
     User? user = FirebaseAuth.instance.currentUser;
